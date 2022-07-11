@@ -22,10 +22,12 @@ class OtpService{
 
     }
 
-    verifyOtp(data,hash){
+    async verifyOtp(hashedOtp, data){
 
-        const oldhash = hashService.hashOtp(data);
-        return oldhash===hash;
+        let oldhash = await hashService.hashOtp(data);
+        // console.log("oldhash " ,oldhash);
+        // console.log("givenhash " ,hashedOtp);
+        return oldhash === hashedOtp;
 
     }
 }
